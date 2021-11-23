@@ -1,7 +1,8 @@
 <?php
 require_once 'Vehicle.php';
+require_once 'LightableInterface.php';
 
-class Car extends Vehicle
+class Car extends Vehicle implements Lightable
 {
     
     public const ALLOWED_ENERGIES=[
@@ -12,6 +13,9 @@ class Car extends Vehicle
     private bool $hasParkBrake= true;
     private string $energy;
     private int $energyLevel;
+    private $light;
+
+
 
         
     public function __construct(string $color ,int $nbSeats, string $energy )
@@ -78,6 +82,38 @@ class Car extends Vehicle
     public function setHasParkBrake(bool $hasParkBrake):void
     {
         $this->hasParkBrake = $hasParkBrake;
+
+    }
+    public function switchOn(): bool
+    {
+        if($this->currentSpeed > 10) {
+            return $this->light = true;
+        } else{
+            return $this->light = false;
+        }
+    }
+
+    public function switchOff(): bool
+    {
+        return $this->light = false;
+    }
+
+    /**
+     * Get the value of light
+     */ 
+    public function getLight():bool 
+    {
+        return $this->light;
+    }
+
+    /**
+     * Set the value of light
+     *
+     * @return  self
+     */ 
+    public function setLight($light):void
+    {
+        $this->light = $light;
 
     }
 }

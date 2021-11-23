@@ -1,7 +1,7 @@
 <?php
 interface RechargeableInterface
 { 
-    public function charge(int $percentage);
-    public function unLoad(int $percentage);
-    
+    public function charge(int $percentage): int ;
+    public function unLoad(int $percentage): int ;
+
 }
